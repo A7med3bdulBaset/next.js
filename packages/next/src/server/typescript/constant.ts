@@ -17,6 +17,7 @@ export const ALLOWED_EXPORTS = [
   'generateMetadata',
   'viewport',
   'generateViewport',
+  'maxDuration',
 ]
 
 export const LEGACY_CONFIG_EXPORT = 'config'
