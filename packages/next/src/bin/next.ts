@@ -2,6 +2,7 @@
 
 import '../server/require-hook'
 import * as log from '../build/output/log'
+import { blue, bold, purple, yellow } from '../lib/picocolors'
 import arg from 'next/dist/compiled/arg/index.js'
 import semver from 'next/dist/compiled/semver'
 import { NON_STANDARD_NODE_ENV } from '../lib/constants'
@@ -38,20 +39,34 @@ const foundCommand = Boolean(commands[args._[0]])
 // This help message is only showed for `next --help`
 // `next <subcommand> --help` falls through to be handled later
 if (!foundCommand && args['--help']) {
-  console.log(`
-    Usage
-      $ next <command>
+  console.log()
+  log.bootstrap(
+    bold(purple(` ${log.prefixes.ready} Next.js ${process.env.__NEXT_VERSION}`))
+  )
+  console.log()
 
-    Available commands
-      ${Object.keys(commands).join(', ')}
+  log.bootstrap(bold('Usage'))
+  log.bootstrap(
+    `  $ ${purple('next')} ${blue('<command>')} ${yellow('[args]')}`
+  )
+  console.log()
 
-    Options
-      --version, -v   Version number
-      --help, -h      Displays this message
+  log.bootstrap(bold('Available commands'))
+  Object.keys(commands).forEach((command) => {
+    log.bootstrap(`  - ${blue(command)}`)
+  })
+  console.log()
 
-    For more information run a command with the --help flag
-      $ next build --help
-  `)
+  log.bootstrap(bold('Options'))
+  log.bootstrap(`  ${yellow('--version')}  ${yellow('-v')}   Version number`)
+  log.bootstrap(
+    `  ${yellow('--help')}     ${yellow('-h')}   Displays this message`
+  )
+  console.log()
+
+  log.bootstrap('For more information run a command with the --help flag')
+  log.bootstrap(`  $ ${purple('next')} ${blue('build')} ${yellow('--help')}`)
+
   process.exit(0)
 }
 
