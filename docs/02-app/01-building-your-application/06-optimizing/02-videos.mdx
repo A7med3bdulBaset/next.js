@@ -49,7 +49,7 @@ export function Video() {
 
 > **Good to know**: When using the `autoplay` attribute, it is important to also include the `muted` attribute to ensure the video plays automatically in most browsers, and the `playsInline` attribute for compatibility with iOS devices.
 >
-> ```
+> ```jsx
 > <video autoplay muted playsInline></video>
 > ```
 
@@ -105,7 +105,7 @@ Choose the embedding method that aligns with your application's requirements and
 
 To embed videos from external platforms, you can use Next.js to fetch the video information and React Suspense to handle the fallback state while loading.
 
-1. **Create a Server Component for video embedding**
+**1. Create a Server Component for video embedding**
 
    The first step is to create a [Server Component](https://nextjs.org/docs/app/building-your-application/rendering/server-components) that generates the appropriate iframe for embedding the video. This component will fetch the source URL for the video and render the iframe.
 
@@ -117,7 +117,7 @@ To embed videos from external platforms, you can use Next.js to fetch the video 
    }
    ```
 
-2. **Stream the video component using React Suspense**
+**2. Stream the video component using React Suspense**
 
    After creating the Server Component to embed the video, the next step is to [stream](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming) the component using [React Suspense](https://react.dev/reference/react/Suspense).
 
